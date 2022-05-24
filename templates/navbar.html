@@ -1,0 +1,47 @@
+<!-- 네비게이션바 -->
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: white">
+<div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="/static/img/KDP_logo2.png" alt="" width="126" height="24" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{% url 'kdp_wb:kdp' %}" style="font-weight:bolder">KDP소개</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'kdp_wb:company' %}" style="font-weight:bolder">회사소개</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'kdp_wb:contact' %}" style="font-weight:bolder">연락처</a>
+                </li>
+                {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'kdp_wb:question' %}" style="font-weight:bolder">게시판</a>
+                </li>
+            {% endif %}
+    <!--            {% if request.user.is_authenticated %}-->
+    <!--            {% if request.user.username == "admin" %}-->
+    <!--        <li class="nav-item" id="menu_tab">-->
+    <!--            <a class="nav-link " href="{% url 'kdp_wb:question' %}" style="font-weight:bolder">BBS</a>-->
+    <!--            {% endif %}-->
+    <!--            {% endif %}-->
+    <!--        </li>-->
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'common:profile' user.id %}"
+                           class="btn btn-sm btn-outline-secondary">마이페이지 [{{ user.username }}]</a>
+                        <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">로그아웃</a>
+                    {% else %}
+                        <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">로그인</a>
+                    {% endif %}
+                </li>
+            </ul>
+    </div>
+</div>
+</nav>

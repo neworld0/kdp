@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<div class="container-fluid">
+	<div class="row">
+        <div class="col-12 text-center">
+            <h1><strong>Contact</strong></h1>
+        </div>
+        <div class="col-12 text-center">
+            <img src="{% static 'contact.png' %}"
+                 alt="company" title="company" class="img-fluid">
+        </div>
+	</div>
+</div>
+{% if request.user.is_authenticated %}
+<div id="container">
+    <div class="text-center">
+        <div class="my-3">
+            <h3 class="p-2">
+                <a href="{% url 'kdp_wb:contact' %}" style="color:black">Contact</a>
+            </h3>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $("#menu_tab").on('click', function() {
+        $("nav-link").active();
+        $("nav-link").removeClass('active');
+        $(this).addClass('active');
+        $(this).css("color", "yellow");
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-3">
+    <h3>{{ user.username }}'s Profile </h3>
+    <div class="card my-3 p-3">
+        <div class="card my-3 p-3">
+            <h4>이름: {{ user.first_name|default:"&dash;" }} </h4>
+        </div>
+        <div class="card my-3 p-3">
+            <h4>별명: {{ user.last_name|default:"&dash;" }} </h4>
+        </div>
+        <div class="card my-3 p-3">
+            <h4>이메일: {{ user.email|default:"&dash;" }} </h4>
+        </div>
+        <div class="card my-3 p-3">
+            <h4>그룹: {% for group in groups %} [ {{ group|default:"&dash;" }} ] {% endfor %}</h4>
+        </div>
+    </div>
+    <div class="col-12 text-right">
+        <a href="{% url 'common:password_change' %}">암호 변경하기</a>
+    </div>
+</div>
+{% endblock %}
