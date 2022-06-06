@@ -10,17 +10,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'kdp_wb:kdp' %}" style="font-weight:bolder">KDP소개</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'kdp_wb:kdp' %}" style="font-weight:bolder">about KDP</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'kdp_wb:company' %}" style="font-weight:bolder">회사소개</a>
+                    <a class="nav-link" href="{% url 'kdp_wb:company' %}" style="font-weight:bolder">about Company</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'kdp_wb:contact' %}" style="font-weight:bolder">연락처</a>
+                    <a class="nav-link" href="{% url 'kdp_wb:contact' %}" style="font-weight:bolder">Contact</a>
                 </li>
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'kdp_wb:question' %}" style="font-weight:bolder">게시판</a>
+                    <a class="nav-link" href="{% url 'kdp_wb:question' %}" style="font-weight:bolder">BBS</a>
                 </li>
             {% endif %}
     <!--            {% if request.user.is_authenticated %}-->
@@ -36,9 +36,9 @@
                     {% if request.user.is_authenticated %}
                         <a href="{% url 'common:profile' user.id %}"
                            class="btn btn-sm btn-outline-secondary">마이페이지 [{{ user.username }}]</a>
-                        <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">로그아웃</a>
+                        <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">Logout</a>
                     {% else %}
-                        <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">로그인</a>
+                        <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">Login</a>
                     {% endif %}
                 </li>
             </ul>
