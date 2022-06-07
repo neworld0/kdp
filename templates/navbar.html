@@ -9,18 +9,18 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{% url 'kdp_wb:kdp' %}" style="font-weight:bolder">about KDP</a>
+                <li class="nav-item" id="menu_tab">
+                    <a class="nav-link" aria-current="page" href="{% url 'kdp_wb:kdp' %}" style="font-weight:bolder">KDP소개</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'kdp_wb:company' %}" style="font-weight:bolder">about Company</a>
+                <li class="nav-item" id="menu_tab">
+                    <a class="nav-link" href="{% url 'kdp_wb:company' %}" style="font-weight:bolder">회사소개</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'kdp_wb:contact' %}" style="font-weight:bolder">Contact</a>
+                <li class="nav-item" id="menu_tab">
+                    <a class="nav-link" href="{% url 'kdp_wb:contact' %}" style="font-weight:bolder">연락처</a>
                 </li>
                 {% if request.user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'kdp_wb:question' %}" style="font-weight:bolder">BBS</a>
+                <li class="nav-item" id="menu_tab">
+                    <a class="nav-link" href="{% url 'kdp_wb:question' %}" style="font-weight:bolder">게시판</a>
                 </li>
             {% endif %}
     <!--            {% if request.user.is_authenticated %}-->
