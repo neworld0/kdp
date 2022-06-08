@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import base_views, question_views, answer_views, vote_views, kdp_views, company_views, contact_views
+from .views import base_views, question_views, answer_views, vote_views, kdp_views, company_views, contact_views, client_views
 
 app_name = 'kdp_wb'
 
@@ -17,6 +17,17 @@ urlpatterns = [
 
     # contact_views.py
     path('contact/', contact_views.contact, name='contact'),
+
+    # client_views.py
+    path('client/', client_views.client, name='client'),
+    path('client/<int:client_id>/',
+         client_views.client_detail, name='client_detail'),
+    path('client/create/',
+         client_views.client_create, name='client_create'),
+    path('client/modify/<int:client_id>/',
+         client_views.client_modify, name='client_modify'),
+    path('client/delete/<int:client_id>/',
+         client_views.client_delete, name='client_delete'),
 
     # question_views.py
     path('question/', question_views.question, name='question'),

@@ -26,6 +26,21 @@ class Question(models.Model):
         return reverse("kdp_wb:question_list", kwargs={"pk": self.pk})
 
 
+class Client(models.Model):
+    email = models.EmailField()
+    name = models.CharField(max_length=100)
+    position = models.CharField(max_length=100)
+    company = models.CharField(max_length=100)
+    nation = models.CharField(max_length=100)
+    phone = models.CharField(max_length=30)
+    content = models.TextField()
+    create_date = models.DateTimeField()
+    modify_date = models.DateTimeField(null=True, blank=True)
+
+    def __str__(self):
+        return self.email
+
+
 class Answer(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='author_answer')
     question = models.ForeignKey(Question, on_delete=models.CASCADE)

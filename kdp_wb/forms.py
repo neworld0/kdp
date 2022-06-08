@@ -1,5 +1,5 @@
 from django import forms
-from kdp_wb.models import Question, Answer
+from kdp_wb.models import Question, Answer, Client
 
 class QuestionForm(forms.ModelForm):
     class Meta:
@@ -16,4 +16,18 @@ class AnswerForm(forms.ModelForm):
         fields = ['content']
         labels = {
             'content': '답변내용',
+        }
+
+class ClientForm(forms.ModelForm):
+    class Meta:
+        model = Client  # 사용할 모델
+        fields = ['email', 'content', 'name', 'company', 'phone', 'position', 'nation']  # ClientForm에서 사용할 Question 모델의 속성
+        labels = {
+            'email': '제목',
+            'content': '내용',
+            'name': '이름',
+            'company': '회사',
+            'phone': '전화번호',
+            'position': '직책',
+            'nation': '국가',
         }
