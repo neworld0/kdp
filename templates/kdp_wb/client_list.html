@@ -2,9 +2,6 @@
 {% load kdp_wb_filter %}
 {% block content %}
 <div class="container my-3">
-    <div>
-        <a href="{% url 'kdp_wb:client_create' %}" class="btn btn-primary">글쓰기</a>
-    </div>
     <div class="row justify-content-between my-3">  <!-- 양쪽정렬 justify-content-between으로 변경 -->
         <div class="col-6">
             <div class="btn-group" role="group">
@@ -34,7 +31,6 @@
         <thead>
         <tr class="table-dark">
             <th>#</th>
-            <th>추천</th>
             <th style="width:50%">제목</th>
             <th>글쓴이</th>
             <th>작성일시</th>
@@ -48,18 +44,13 @@
                 <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
                 {{ client_list.paginator.count|sub:client_list.start_index|sub:forloop.counter0|add:1 }}
             </td>
-            <td>
-                {% if client.voter.all.count > 0 %}
-                <span class="badge badge-warning px-2 py-1">{{ client.voter.all.count }}</span>  <!-- 추천 추가 -->
-                {% endif %}
-            </td>
             <td class="text-start">
-                <a href="{% url 'kdp_wb:detail' client.id %}">{{ client.subject }}</a>
+                <a href="{% url 'kdp_wb:client_detail' client.id %}">{{ client.company }}</a>
                 {% if client.answer_set.count > 0 %}
                 <span class="text-danger small mx-2">{{ client.answer_set.count }}</span>
                 {% endif %}
             </td>
-            <td>{{ client.author.first_name }}</td>  <!-- 글쓴이 추가 -->
+            <td>{{ client.name }}</td>  <!-- 글쓴이 추가 -->
             <td>{{ client.create_date }}</td>
         </tr>
         {% endfor %}
@@ -109,7 +100,6 @@
         {% endif %}
     </ul>
     <!-- 페이징처리 끝 -->
-    <a href="{% url 'kdp_wb:client_create' %}" class="btn btn-primary">글쓰기</a>
 </div>
 <form id="searchForm" method="get" action="{% url 'kdp_wb:client' %}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">

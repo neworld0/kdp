@@ -8,8 +8,12 @@ from django.contrib.auth.models import User
 from ..forms import ClientForm
 from ..models import Client
 
+# 고객 상담 문의
+def contact(request):
+    return render(request, 'kdp_wb/client_form.html')
 
-# 게시판 목록 출력
+
+# 고객 상담 문의 목록 출력
 @login_required(login_url='common:login')
 def client(request):
     # 입력 파라미터
@@ -39,30 +43,31 @@ def client(request):
 @login_required(login_url='common:login')
 def client_detail(request, client_id):
     client = get_object_or_404(Client, pk=client_id)
-    user = User.objects.get(username=request.user)
-    groups = user.groups.all()
-    group = []
-    for g in groups:
-        gr = g.id
-        group.append(gr)
-    context = {'client': client, 'group_list': group}
+    context = {'client': client}
     return render(request, 'kdp_wb/client_detail.html', context)
 
 
-# Client Board 질문등록
-@login_required(login_url='common:login')
+# Client 문의 접수 완료 화면
+def client_receive(request):
+    return render(request, 'kdp_wb/client_receive.html')
+
+
+# Client 문의 등록
 def client_create(request):
     if request.method == 'POST':
         form = ClientForm(request.POST)
+        # form1 = SettingsForm(request.POST)
         if form.is_valid():
             client = form.save(commit=False)
-            client.author = request.user  # author 속성에 로그인 계정 저장
+            # selected = form1.save(commit=False)
             client.create_date = timezone.now()
             client.save()
-            return redirect('kdp_wb:client')
+            # selected = request.POST.getlist('selected')
+            # selected.save()
+            return redirect('kdp_wb:receive')
     else:
-        form = clientForm()
-    context = {'form': form}
+        form = ClientForm()
+    context = {'form': form} #,'form1': form1}
     return render(request, 'kdp_wb/client_form.html', context)
 
 
@@ -72,14 +77,14 @@ def client_modify(request, client_id):
     client = get_object_or_404(Client, pk=client_id)
     if request.user != client.author:
         messages.error(request, '수정권한이 없습니다')
-        return redirect('kdp_wb:detail', client_id=client.id)
+        return redirect('kdp_wb:client_detail', client_id=client.id)
     if request.method == "POST":
         form = ClientForm(request.POST, instance=client)
         if form.is_valid():
             client = form.save(commit=False)
             client.modify_date = timezone.now()  # 수정일시 저장
             client.save()
-            return redirect('kdp_wb:detail', client_id=client.id)
+            return redirect('kdp_wb:client_detail', client_id=client.id)
     else:
         form = ClientForm(instance=client)
     context = {'form': form}
@@ -92,6 +97,6 @@ def client_delete(request, client_id):
     client = get_object_or_404(Client, pk=client_id)
     if request.user != client.author:
         messages.error(request, '삭제권한이 없습니다')
-        return redirect('kdp_wb:detail', client_id=client.id)
+        return redirect('kdp_wb:client_detail', client_id=client.id)
     client.delete()
     return redirect('kdp_wb:client')

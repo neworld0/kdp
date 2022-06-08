@@ -3,26 +3,32 @@
 {% load static %}
 <div class="container-fluid">
 	<div class="row text-white bg-black">
-        <div class="col-12 text-center">
-            <h1><strong>Contact</strong></h1>
+        <div class="col-12 text-center m-3 p-3">
+            <h1 class="p-3"><strong>연락처</strong></h1>
+            <h4>Phone: +82-2010-8888</h4>
+            <h4>Fax: +82-2010-8899</h4>
+            <h4>email: kdp.datacenter@gmail.com</h4>
         </div>
         <div class="col-12 text-center">
-            <img src="{% static 'img/contact.png' %}"
+            <img src="{% static 'img/company_location.png' %}"
                  alt="company" title="company" class="img-fluid">
         </div>
 	</div>
 </div>
-{% if request.user.is_authenticated %}
-<div id="container">
-    <div class="text-center">
-        <div class="my-3">
-            <h3 class="p-2">
-                <a href="{% url 'kdp_wb:contact' %}" style="color:black">Contact</a>
-            </h3>
+<div class="row text-white bg-black">
+    <div class="col-12 text-center p-3">
+        <div class="p-3">
+        <img src="{% static 'img/contact_bubble.png' %}"
+            alt="contact" title="contact" class="img-fluid">
         </div>
+        <h2 class="p-3">전문가와 상담</h2>
+        <p>KDP Properties가 귀사의 혁신을 돕겠습니다.</p>
+    </div>
+    <div class="text-center p-3">
+        <a href="{% url 'kdp_wb:client_create' %}" class="btn btn-outline-danger btn-lg p-3" 
+            role="button"><strong>상담등록</strong></a>
     </div>
 </div>
-{% endif %}
 {% endblock %}
 
 {% block script %}

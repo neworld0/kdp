@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="container">
-    <h5 class="my-3 border-bottom pb-2">문의등록</h5>
+    <div class="m-3 text-center border-bottom pb-3">
+        <h1 class="m-3 text-center border-bottom pb-3" style="font:bold">상담등록</h1>
+        <p>KDP Properties가 어떻게 귀사의 데이터센터를 세계적인 역량과 상호 연결을 제공할 수 있는지 알아보십시오.</p>
+    </div>
     <form method="post">
         {% csrf_token %}
         <!-- 오류표시 Start -->
@@ -18,17 +21,61 @@
         </div>
         {% endif %}
         <!-- 오류표시 End -->
-        <div class="mb-3">
-            <label for="subject" class="form-label">제목</label>
-            <input type="text" class="form-control" name="subject" id="subject"
-                   value="{{ form.subject.value|default_if_none:'' }}">
+        <div class="card bg-light m-3 p-3">
+        <div class="row">
+            <div class="col mb-3">
+                <label for="email" class="form-label">이메일</label>
+                <input type="text" class="form-control" name="email" id="email"
+                    value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="col mb-3">
+                <label for="phone" class="form-label">전화번호</label>
+                <input type="text" class="form-control" name="phone" id="phone"
+                    value="{{ form.phone.value|default_if_none:'' }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="name" class="form-label">이름</label>
+                <input type="text" class="form-control" name="name" id="name"
+                    value="{{ form.name.value|default_if_none:'' }}">
+            </div>
+            <div class="col mb-3">
+                <label for="positon" class="form-label">직책</label>
+                <input type="text" class="form-control" name="position" id="position"
+                    value="{{ form.position.value|default_if_none:'' }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                <label for="company" class="form-label">회사명</label>
+                <input type="text" class="form-control" name="company" id="company"
+                    value="{{ form.company.value|default_if_none:'' }}">
+            </div>
+            <div class="col mb-3">
+                <label for="nation" class="form-label">국가</label>
+                <input type="text" class="form-control" name="nation" id="nation"
+                    value="{{ form.nation.value|default_if_none:'' }}">
+            </div>
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">내용</label>
             <textarea class="form-control" name="content"
                       id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
         </div>
-        <button type="submit" class="btn btn-primary">저장하기</button>
+        <!-- <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="1" id="selected">
+            <label class="form-check-label" for="selected">
+              [접수]개인정보 수집 및 이용 동의
+            </label>
+        </div> -->
+        <div class="mb-3">
+            <p>[접수] 아래 [제출하기] 버튼을 누르시면, 개인정보 수집 및 이용에 동의하신 것으로 간주합니다.</p>
+        </div>
+    </div>
+        <div class="text-center m-3 p-3">    
+            <button type="submit" class="btn btn-primary">제출하기</button>
+        </div>
     </form>
 </div>
 {% endblock %}

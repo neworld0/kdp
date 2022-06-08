@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import base_views, question_views, answer_views, vote_views, kdp_views, company_views, contact_views, client_views
+from .views import base_views, question_views, answer_views, vote_views, kdp_views, company_views, contact_views, client_views, client_answer_views, receive_views
 
 app_name = 'kdp_wb'
 
@@ -29,6 +29,10 @@ urlpatterns = [
     path('client/delete/<int:client_id>/',
          client_views.client_delete, name='client_delete'),
 
+    # receive_views.py
+    path('receive/', receive_views.receive, name='receive'),
+
+
     # question_views.py
     path('question/', question_views.question, name='question'),
     path('question/<int:question_id>/',
@@ -47,6 +51,15 @@ urlpatterns = [
          answer_views.answer_modify, name='answer_modify'),
     path('answer/delete/<int:answer_id>/',
          answer_views.answer_delete, name='answer_delete'),
+
+
+    # client_answer_views.py
+    path('client_answer/create/<int:client_id>/',
+         client_answer_views.client_answer_create, name='client_answer_create'),
+    path('client_answer/modify/<int:client_answer_id>/',
+         client_answer_views.client_answer_modify, name='client_answer_modify'),
+    path('client_answer/delete/<int:client_answer_id>/',
+         client_answer_views.client_answer_delete, name='client_answer_delete'),
 
 # vote_views.py
     path('vote/question/<int:question_id>/', vote_views.vote_question, name='vote_question'),
