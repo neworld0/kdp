@@ -155,6 +155,9 @@ LOGGING = {
             'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
         },
     },
+    'standard': {
+        'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+    },    
     'handlers': {
         'console': {
             'level': 'INFO',
@@ -176,7 +179,7 @@ LOGGING = {
             'filters': ['require_debug_false'],
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': BASE_DIR / 'logs/kdp.log',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
+            'maxBytes': 1024*1024*5,  # 5 MB
             'backupCount': 5,
             'formatter': 'standard',
         },
