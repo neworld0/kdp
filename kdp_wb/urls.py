@@ -1,6 +1,8 @@
 from django.urls import path
 
-from .views import base_views, question_views, answer_views, vote_views, kdp_views, company_views, contact_views, client_views, client_answer_views, receive_views
+from .views import base_views, question_views, answer_views, vote_views, \
+kdp_views, company_views, contact_views, client_views, client_answer_views, \
+receive_views, privacy_views
 
 app_name = 'kdp_wb'
 
@@ -8,6 +10,12 @@ urlpatterns = [
     # base_views.py
     path('',
          base_views.index, name='index'),
+
+    # privacy_views.py
+    path('legal_kdp/',
+         privacy_views.kdp_privacy_policy, name='kdp_privacy_policy'),
+     path('legal_korea/',
+         privacy_views.korea_privacy_policy, name='korea_privacy_policy'),
 
     # kdp_views.py
     path('kdp/', kdp_views.kdp, name='kdp'),
