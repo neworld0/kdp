@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'common.apps.CommonConfig',
-    'kdp_wb.apps.KdpConfig',
+    'kdp.apps.KdpConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -188,7 +188,7 @@ LOGOUT_REDIRECT_URL = '/'
 #         'django': {
 #             'handlers': ['console', 'mail_admins', 'file'],
 #             'level': 'INFO',
-#             'kdp_wb': {
+#             'kdp': {
 #                 'handlers': ['console', 'file'],
 #                 'level': 'INFO',
 #             },
