@@ -1,37 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-<div class="container-fluid">
-	<div class="row text-white bg-black">
-        <div class="col-12 text-center p-3">
-            <h1 class="p-3 border-bottom">연락처</h1>
-            <div class="card bg-black text-white pt-3">
-                <h6>Phone: +82-2-2010-8888</h6>
-                <h6>Fax: +82-2-2010-8899</h6>
-                <h6>Email: kdp.datacenter@gmail.com</h6>
-                <h6>Address: 서울시 강남구 테헤란로 521 파르나스타워 30층</h6>
+<div class="contiainer-fluid bg-black text-white">
+    <div class="container bg-black text-white" style="width:1200px">
+        <h1 class="text-center p-3 border-bottom">연락처(Contact)</h1>
+        <div class="card-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card bg-black text-left text-white py-3">
+                        <h4>주식회사 코리아디지털파크</h4>
+                        <h6>전화: 02-2010-8888</h6>
+                        <h6>팩스: 02-2010-8899</h6>
+                        <h6>이메일: neworld@koreadigitalpark.com</h6>
+                        <h6>주소: 서울시 강남구 테헤란로 521 파르나스타워 30층</h6>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card bg-black text-left text-white py-3">
+                        <h4>Korea Digital Park, Inc.</h4>
+                        <h6>Phone: +82-2-2010-8888</h6>
+                        <h6>Fax: +82-2-2010-8899</h6>
+                        <h6>Email: neworld@koreadigitalpark.com</h6>
+                        <h6>Address: 30F, Parnas Tower, 521 Teheran-ro, Gangnam-gu, Seoul, Korea</h6>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container w-90">
-            <div class="col-12 text-center">
+        <div class="container border-top py-3">
+            <div class="col-12 text-center py-3">
                 <img src="{% static 'img/company_location1.png' %}"
                     alt="company_location" title="company_location" class="img-fluid img-thumbnail">
             </div>
         </div>
-	</div>
-</div>
-<div class="row text-white bg-black">
-    <div class="col-12 text-center p-3">
-        <div class="p-3">
-        <img src="{% static 'img/contact_bubble.png' %}"
-            alt="contact" title="contact" class="img-fluid">
-        </div>
-        <h2 class="p-3">전문가와 상담</h2>
-        <p>Korea Digital Park가 귀사의 혁신을 돕겠습니다.</p>
     </div>
-    <div class="text-center p-3">
-        <a href="{% url 'kdp:client_create' %}" class="btn btn-outline-danger btn-lg p-3" 
-            role="button"><strong>상담등록</strong></a>
+    <div class="row text-white bg-black">
+        <div class="col-12 text-center p-3">
+            <div class="p-3">
+            <img src="{% static 'img/contact_bubble.png' %}"
+                alt="contact" title="contact" class="img-fluid">
+            </div>
+            <h2 class="p-3">전문가와 상담</h2>
+            <p>Korea Digital Park가 귀사의 혁신을 돕겠습니다.</p>
+        </div>
+        <div class="text-center p-3">
+            <a href="{% url 'kdp:client_create' %}" class="btn btn-outline-danger btn-lg p-3"
+                role="button"><strong>상담등록</strong></a>
+        </div>
     </div>
 </div>
 {% endblock %}
