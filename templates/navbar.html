@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-sm navbar-light" style="background-color: white">
 <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'index' %}">
-      <img src="/static/img/KDP_logo1.png" alt="" width="126" height="24" class="d-inline-block align-text-top">
+      <img src="/static/img/KDP_logo_bgremov.png" alt="" width="126" height="24" class="d-inline-block align-text-top">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -15,7 +15,7 @@
                 {% if request.user.is_authenticated %}
                 <a class="nav-link" href="{% url 'kdp:client' %}" style="font-weight:bolder">고객문의</a>
                 <a class="nav-link" href="{% url 'kdp:question' %}" style="font-weight:bolder">게시판</a>
-                <a class="nav-link" href="{% url 'kdp:email' %}" style="font-weight:bolder">이메일</a>
+                <a class="nav-link" href="https://mail.daum.net" style="font-weight:bolder" target="_blank">이메일</a>
                 {% endif %}
             </div>
             <ul class="navbar-nav mr-auto">
