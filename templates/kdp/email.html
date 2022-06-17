@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+  <head>
+    <meta http-equiv="refresh" content="7; url='https://mail.daum.net'" />
+  </head>
+  <body>
+    <p class="text-center">Please follow <a href="https://mail.daum.net">this link</a>.</p>
+  </body>
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $("#menu_tab").on('click', function() {
+        $("nav-link").active();
+        $("nav-link").removeClass('active');
+        $(this).addClass('active');
+        $(this).css("color", "yellow");
+    });
+});
+</script>
+{% endblock %}

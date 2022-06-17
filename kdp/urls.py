@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import base_views, introduction_views, question_views, answer_views, vote_views, \
 company_views, contact_views, client_views, client_answer_views, \
-receive_views, privacy_views
+receive_views, privacy_views, email_views
 
 app_name = 'kdp'
 
@@ -16,6 +16,9 @@ urlpatterns = [
          privacy_views.kdp_privacy_policy, name='kdp_privacy_policy'),
      path('legal_korea/',
          privacy_views.korea_privacy_policy, name='korea_privacy_policy'),
+
+    # email_views.py
+    path('email/', email_views.email, name='email'),
 
     # introduction_views.py
     path('introduction/', introduction_views.introduction, name='introduction'),
