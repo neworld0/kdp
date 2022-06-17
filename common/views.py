@@ -1,6 +1,7 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, update_session_auth_hash
 from django.contrib.auth.views import PasswordChangeView, PasswordResetConfirmView, PasswordResetView
+from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect, resolve_url, HttpResponse, get_object_or_404
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
@@ -46,13 +47,31 @@ def internal_server_error(request, *args, **argv):
     return render(request, 'common/500.html', status=500)
 
 
-class MyPasswordChangeView(PasswordChangeView):
-    success_url = reverse_lazy('common:profile')
-    template_name = 'common/password_change_form.html'
+# class MyPasswordChangeView(PasswordChangeView):
+#     success_url = reverse_lazy('common:profile')
+#     template_name = 'common/password_change_form.html'
+#
+#     def form_valid(self, form):
+#         messages.info(self.request, '암호변경을 완료했습니다.')
+#         return super().form_valid(form)
 
-    def form_valid(self, form):
-        messages.info(self.request, '암호 변경을 완료했습니다.')
-        return super().form_valid(form)
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('index')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'common/change_password.html', {
+        'form': form
+    })
+
 
 
 class MyPasswordResetView(PasswordResetView):
