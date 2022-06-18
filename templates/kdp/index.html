@@ -53,16 +53,22 @@
         </div>
         <div class="row">
             <div class="col-4 text-center mt-3">
-                <img src="{% static 'img/KT_logo.png' %}"
-                    alt="KT" title="KT" class="img-fluid">
+                <div class="card p-3">
+                    <img src="{% static 'img/KT_logo.png' %}"
+                        alt="KT" title="KT" class="img-fluid">
+                </div>
             </div>
             <div class="col-4 text-center mt-3">
+                <div class="card p-3">
                 <img src="{% static 'img/SK_logo.jpg' %}"
                     alt="SK" title="SK" class="img-fluid">
+                </div>
             </div>
             <div class="col-4 text-center mt-3">
+                <div class="card p-3">
                 <img src="{% static 'img/hyundai_EC_logo.png' %}"
                     alt="hyundai" title="hyundai" class="img-fluid">
+                </div>
             </div>
         </div>
         <div class="col-12 text-center mt-3 p-3">
@@ -73,7 +79,7 @@
             <h2 class="pt-3">전문가와 상담</h2>
             <p>Korea Digital Park가 귀사의 혁신을 돕겠습니다.</p>
         </div>
-        <div class="text-center p-3">
+        <div class="text-center mb-3 p-3">
             <a href="{% url 'kdp:contact' %}" class="btn btn-outline-danger btn-lg px-3"
                 role="button"><strong>상담하기</strong></a>
         </div>
