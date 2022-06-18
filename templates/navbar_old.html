@@ -1,0 +1,34 @@
+<!-- 네비게이션바 -->
+<nav class="navbar navbar-expand-sm navbar-light" style="background-color: white">
+<div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="/static/img/KDP_logo_bgremov.png" alt="" width="126" height="24" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                <a class="nav-link" aria-current="page" href="{% url 'kdp:introduction' %}" style="font-weight:bolder">KDP소개</a>
+                <a class="nav-link" href="{% url 'kdp:company' %}" style="font-weight:bolder">회사소개</a>
+                <a class="nav-link" href="{% url 'kdp:contact' %}" style="font-weight:bolder">연락처</a>
+                {% if request.user.is_authenticated %}
+                <a class="nav-link" href="{% url 'kdp:client' %}" style="font-weight:bolder">고객문의</a>
+                <a class="nav-link" href="{% url 'kdp:question' %}" style="font-weight:bolder">게시판</a>
+                <a class="nav-link" href="https://mail.daum.net" style="font-weight:bolder" target="_blank">이메일</a>
+                {% endif %}
+            </div>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'common:profile' user.id %}"
+                           class="btn btn-sm btn-outline-secondary">마이페이지 [{{ user.username }}]</a>
+                        <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">Logout</a>
+                    {% else %}
+                        <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">Login</a>
+                    {% endif %}
+                </li>
+            </ul>
+    </div>
+</div>
+</nav>
