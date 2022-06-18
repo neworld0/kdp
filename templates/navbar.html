@@ -15,7 +15,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link text-black" href="{% url 'index' %}" style="font-weight:bolder">HOME</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link text-black" href="{% url 'kdp:introduction' %}" style="font-weight:bolder">KDP소개</a>
           </li>
