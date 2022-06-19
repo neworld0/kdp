@@ -24,3 +24,7 @@
     top: 10px !important;
     width: 100px;
     } */
+
+. offcanvas {
+    offcanvas-horizontal-width: 100px;
+}
