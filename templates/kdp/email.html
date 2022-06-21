@@ -1,13 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-  <head>
-    <meta http-equiv="refresh" content="7; url='https://mail.daum.net'"/>
-  </head>
-  <body>
-    <p class="text-center py-3">잠시만 기다려주세요. 곧 이메일 화면으로 연결됩니다.</p>
-    <p class="text-center py-3">자동으로 연결이 안 되면 <a href="https://mail.daum.net" target="_blank">여기를 클릭하세요</a>.</p>
-  </body>
+
+<!--<form id="login" target="frame" method="post" action="http://mail.demo1028.myplug.kr/">-->
+<!--    <input type="hidden" name="cid" id="cid" value="admin" />-->
+<!--    <input type="hidden" name="cpw" id="cpq" value="xcrqkvj59w" />-->
+<!--</form>-->
+
+<div class="container">
+  <iframe src="http://mail.demo1028.myplug.kr/" width="100%" height="700px" title="email" style="border:none"></iframe>
+</div>
+
+
 {% endblock %}
 
 {% block script %}
@@ -20,5 +24,19 @@ $(document).ready(function(){
         $(this).css("color", "yellow");
     });
 });
+document.cookie = "safeCookie1=foo; SameSite=Lax";
+document.cookie = "safeCookie2=foo";
+document.cookie = "crossCookie=bar; SameSite=None; Secure";
+
+// submit the form into iframe for login into remote site
+document.getElementById('login').submit();
+
+// once you're logged in, change the source url (if needed)
+var iframe = document.getElementById('frame');
+iframe.onload = function() {
+    if (iframe.src != "http://remote.com/list") {
+        iframe.src = "http://remote.com/list";
+    }
+}
 </script>
 {% endblock %}
