@@ -17,39 +17,53 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-          <li class="nav-item">
+          <li class="nav-item p-1">
             <a class="nav-link text-black active" href="{% url 'index' %}" style="font-weight:bolder">HOME</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item p-1">
             <a class="nav-link text-black" href="{% url 'kdp:introduction' %}" style="font-weight:bolder">KDP소개</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item p-1">
             <a class="nav-link text-black" href="{% url 'kdp:company' %}" style="font-weight:bolder">회사소개</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item p-1">
             <a class="nav-link text-black" href="{% url 'kdp:contact' %}" style="font-weight:bolder">연락처</a>
           </li>
           {% if request.user.is_authenticated %}
-          <li class="nav-item">
+          <li class="nav-item p-1">
             <a class="nav-link text-black" href="{% url 'kdp:client' %}" style="font-weight:bolder">고객문의</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item p-1">
             <a class="nav-link text-black" href="{% url 'kdp:question' %}" style="font-weight:bolder">게시판</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-black" href="{% url 'kdp:email' %}" style="font-weight:bolder">이메일</a>
-<!--            <a class="nav-link text-black" href="http://mail.koreadigitalpark.com/mail_api/token_sso/" style="font-weight:bolder" target="_blank">이메일</a>-->
+<!--          <li class="nav-item">-->
+<!--            <a class="nav-link text-black" href="{% url 'kdp:email' %}" style="font-weight:bolder">이메일</a>-->
+<!--          </li>-->
           {% endif %}
         </ul>
         <div class="pt-1">
           <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                  {% if request.user.is_authenticated %}
-                      <a href="{% url 'common:profile' user.id %}"
+<!--              <li class="nav-item p-1">-->
+<!--                  {% if request.user.is_authenticated %}-->
+<!--                    <form method="POST" action="http://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">-->
+<!--                        <input type="hidden" name="api_key" id="api_key" value="#!@kose789">-->
+<!--                        <input type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">-->
+<!--                        <input type="hidden" name="data" id="data" value="">-->
+<!--                        <input type="button" id="btnOK" value="이메일" class="btn btn-sm btn-outline-secondary">-->
+<!--                    </form>-->
+<!--              </li>-->
+              <li class="nav-item p-1">
+                    <a href="http://mail.koreadigitalpark.com/"
+                         class="btn btn-sm btn-outline-secondary" target="_blank"><strong>이메일</strong></a>
+              </li>
+              <li class="nav-item p-1">
+                    <a href="{% url 'common:profile' user.id %}"
                          class="btn btn-sm btn-outline-secondary">마이페이지 [{{ user.username }}]</a>
-                      <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">Logout</a>
+              </li>
+              <li class="nav-item p-1">
+                    <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">Logout</a>
                   {% else %}
-                      <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">Login</a>
+                    <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">Login</a>
                   {% endif %}
               </li>
           </ul>
@@ -58,3 +72,44 @@
       </div>
     </div>
 </nav>
+
+{% block script %}
+<script type='text/javascript'>
+var token = "";
+function makeid()
+{
+	var text = "";
+	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	for( var i=0; i < 40; i++ )
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	return text;
+}
+
+$(function(){
+	token = makeid();
+	$("#data").val('{"cid":{{ user.username }}, "MailToken":"' + token + '"}')
+});
+$("#btnOK").click(function(){
+	$.ajax({
+		type : "POST",
+		dataType : "json",
+		url : "http://mail.koreadigitalpark.com/mail_api/token_sso",
+		data : {
+			"api_key" : $("#api_key").val(),
+			"host_domain" : $("#host_domain").val(),
+			"data" : $("#data").val(),
+		},
+		success:function(data){
+			console.log(data);
+			var date = new Date();
+			date.setTime(date.getTime() + (10 * 1000));
+			$.cookie('MailToken' , token, {expires: date, path: "/", domain: ".도메인(kosekorea.co.kr)"});
+			window.open('http://mail.koreadigitalpark.com/lw_api/token_sso/'+ token + '?return_url=%2Fwebmail%2Fwrite', 'MAIL', '');
+		},
+		error:function(e){
+			alert(e.responseText);
+		}
+	});
+});
+</script>
+{% endblock %}

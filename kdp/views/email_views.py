@@ -13,5 +13,5 @@ logger = logging.getLogger('kdp')
 @login_required(login_url='common:login')
 def email(request, ):
     user = User.objects.get(username=request.user)
-    context = {'cid': user, "MailToken": "0SF4RVoz51hPaa37sCYJdftrpk91eL6hBAKWzq3n"}
+    context = {"cid": user, "MailToken": "0SF4RVoz51hPaa37sCYJdftrpk91eL6hBAKWzq3n"}
     return render(request, 'kdp/email.html', context)
