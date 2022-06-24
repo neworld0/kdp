@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container my-3">
+    <div class="pt-3">
+        <p class="pt-3"></p>
+        <p class="pt-3"></p>
+    </div>
     <form method="post" action="{% url 'common:login' %}">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">  <!-- 로그인 성공후 이동되는 URL -->

@@ -17,10 +17,10 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-          <li class="nav-item" id="#manu_tab">
+          <li class="nav-item">
             <a class="nav-link text-black active" href="{% url 'index' %}" style="font-weight:bolder">HOME</a>
           </li>
-          <li class="nav-item" id="#manu_tab">
+          <li class="nav-item">
             <a class="nav-link text-black" href="{% url 'kdp:introduction' %}" style="font-weight:bolder">KDP소개</a>
           </li>
           <li class="nav-item">
@@ -37,8 +37,8 @@
             <a class="nav-link text-black" href="{% url 'kdp:question' %}" style="font-weight:bolder">게시판</a>
           </li>
           <li class="nav-item">
-<!--            <a class="nav-link text-black" href="{% url 'kdp:email' %}" style="font-weight:bolder">이메일</a>-->
-            <a class="nav-link text-black" href="https://mail.daum.net" style="font-weight:bolder" target="_blank">이메일</a>
+            <a class="nav-link text-black" href="{% url 'kdp:email' %}" style="font-weight:bolder">이메일</a>
+<!--            <a class="nav-link text-black" href="http://mail.koreadigitalpark.com/mail_api/token_sso/" style="font-weight:bolder" target="_blank">이메일</a>-->
           {% endif %}
         </ul>
         <div class="pt-1">
