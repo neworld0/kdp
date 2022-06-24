@@ -44,28 +44,30 @@
         <div class="pt-1">
           <ul class="navbar-nav mr-auto">
 <!--              <li class="nav-item p-1">-->
-<!--                  {% if request.user.is_authenticated %}-->
-<!--                    <form method="POST" action="http://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">-->
-<!--                        <input type="hidden" name="api_key" id="api_key" value="#!@kose789">-->
-<!--                        <input type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">-->
-<!--                        <input type="hidden" name="data" id="data" value="">-->
-<!--                        <input type="button" id="btnOK" value="이메일" class="btn btn-sm btn-outline-secondary">-->
-<!--                    </form>-->
+<!--                <form method="POST" action="http://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">-->
+<!--                    <input type="hidden" name="api_key" id="api_key" value="#!@kose789">-->
+<!--                    <input type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">-->
+<!--                    <input type="hidden" name="data" id="data" value="">-->
+<!--                    <input type="button" id="btnOK" value="이메일" class="btn btn-sm btn-outline-secondary">-->
+<!--                </form>-->
 <!--              </li>-->
+          {% if request.user.is_authenticated %}
               <li class="nav-item p-1">
                     <a href="http://mail.koreadigitalpark.com/"
                          class="btn btn-sm btn-outline-secondary" target="_blank"><strong>이메일</strong></a>
               </li>
               <li class="nav-item p-1">
-                    <a href="{% url 'common:profile' user.id %}"
-                         class="btn btn-sm btn-outline-secondary">마이페이지 [{{ user.username }}]</a>
+                  <a href="{% url 'common:profile' user.id %}"
+                     class="btn btn-sm btn-outline-secondary">마이페이지 [{{ user.username }}]</a>
               </li>
               <li class="nav-item p-1">
-                    <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">Logout</a>
-                  {% else %}
-                    <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">Login</a>
-                  {% endif %}
+                  <a href="{% url 'common:logout' %}" class="btn btn-sm btn-outline-secondary">Logout</a>
               </li>
+          {% else %}
+              <li class="nav-item p-1">
+                  <a href="{% url 'common:login' %}" class="btn btn-sm btn-outline-secondary">Login</a>
+              </li>
+          {% endif %}
           </ul>
         </div>
         </div>
