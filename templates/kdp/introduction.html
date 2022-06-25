@@ -110,16 +110,3 @@
     </div>
 </div>
 {% endblock %}
-
-{% block script %}
-<script type='text/javascript'>
-$(document).ready(function(){
-    $("#navbarNavAltMarkup").on('click', function() {
-        $("nav-link").active();
-        $("nav-link").removeClass('active');
-        $(this).addClass('active');
-        $(this).css("color", "yellow");
-    });
-});
-</script>
-{% endblock %}

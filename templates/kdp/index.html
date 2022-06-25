@@ -54,52 +54,40 @@
         <div class="col-12 text-center mt-3 p-3">
             <h2 class="my-3">Korea Digital Park는 국내 최대의 통신/네트워크 기업, 건설 기업 등 최고의 파트너와 함께 클라우드 데이터센터 클러스터를 만들어 갑니다</h2>
         </div>
-        <div class="row">
-            <div class="col-4 text-center mt-3">
-                <div class="card p-3">
-                    <img src="{% static 'img/KT_logo.png' %}"
-                        alt="KT" title="KT" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-4 text-center mt-3">
-                <div class="card p-3">
-                <img src="{% static 'img/SK_logo.jpg' %}"
-                    alt="SK" title="SK" class="img-fluid">
-                </div>
-            </div>
-            <div class="col-4 text-center mt-3">
-                <div class="card p-3">
-                <img src="{% static 'img/hyundai_EC_logo.png' %}"
-                    alt="hyundai" title="hyundai" class="img-fluid">
-                </div>
+    </div>
+    <div class="row">
+        <div class="col-4 text-center mt-3">
+            <div class="card p-3">
+                <img src="{% static 'img/KT_logo.png' %}"
+                    alt="KT" title="KT" class="img-fluid">
             </div>
         </div>
-        <div class="row mt-3 pt-3">
-            <div class="col-12 text-center pt-3">
-                <div class="pt-3">
-                <img src="{% static 'img/contact_bubble.png' %}"
-                    alt="contact" title="contact" class="img-fluid">
-                </div>
-                <h2 class="p-3">전문가와 상담</h2>
-                <p>Korea Digital Park가 귀사의 혁신을 돕겠습니다.</p>
+        <div class="col-4 text-center mt-3">
+            <div class="card p-3">
+            <img src="{% static 'img/SK_logo.jpg' %}"
+                alt="SK" title="SK" class="img-fluid">
             </div>
-            <div class="text-center p-3 mb-3">
-                <a href="{% url 'kdp:contact' %}" class="btn btn-outline-danger btn-lg px-3"
-                    role="button"><strong>상담하기</strong></a>
+        </div>
+        <div class="col-4 text-center mt-3">
+            <div class="card p-3">
+            <img src="{% static 'img/hyundai_EC_logo.png' %}"
+                alt="hyundai" title="hyundai" class="img-fluid">
             </div>
         </div>
     </div>
+    <div class="row mt-3 pt-3">
+        <div class="col-12 text-center pt-3">
+            <div class="pt-3">
+            <img src="{% static 'img/contact_bubble.png' %}"
+                alt="contact" title="contact" class="img-fluid">
+            </div>
+            <h2 class="p-3">전문가와 상담</h2>
+            <p>Korea Digital Park가 귀사의 혁신을 돕겠습니다.</p>
+        </div>
+        <div class="text-center p-3 mb-3">
+            <a href="{% url 'kdp:contact' %}" class="btn btn-outline-danger btn-lg px-3"
+                role="button"><strong>상담하기</strong></a>
+        </div>
+    </div>
 </div>
-{% endblock %}
-{% block script %}
-<script type='text/javascript'>
-$(document).ready(function(){
-    $("#navbarNavAltMarkup").on('click', function() {
-        $("nav-link").active();
-        $("nav-link").removeClass('active');
-        $(this).addClass('active');
-        $(this).css("color", "yellow");
-    });
-});
-</script>
 {% endblock %}
