@@ -6,7 +6,14 @@
         <p class="p-3"></p>
         <p class="p-3"></p>
     </div>
-    <table border='1' cellspacing="0" cellpadding="5" style="width: 700px" align="left">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">구분</th>
+                <th scope="col">내용</th>
+            </tr>
+        </thead>
+        <tbody>
         <tr>
             <th>api_key</th>
             <td><input type="text" name="api_key" id="api_key" value="#kdp@1914!" style="width: 98%;"><br/>
@@ -26,6 +33,7 @@
                 <input type="button" id="btnOK" value="전송" />
             </td>
         </tr>
+        </tbody>
     </table>
 </div>
 {% endblock %}
