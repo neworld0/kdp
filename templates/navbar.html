@@ -45,7 +45,7 @@
           <ul class="navbar-nav mr-auto">
               {% if request.user.is_authenticated %}
               <li class="nav-item p-1">
-                <form method="POST" action="https://mail.koreadigitalpark.com/mail_api/token_sso/" target="_blank">
+                <form method="POST" action="{% url 'kdp:email' %}" target="_blank">
                     <input type="hidden" name="api_key" id="api_key" value="#kdp@1914!">
                     <input type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">
                     <input type="hidden" name="data" id="data" value="">
