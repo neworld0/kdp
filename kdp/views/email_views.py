@@ -34,7 +34,7 @@ def email(request):
     expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=10)
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     url = "https://mail.koreadigitalpark.com/mail_api/token_sso/"
-    set_cookie = ('MailToken', token, {expiry_time, "/", host_domain})
+    set_cookie = ('MailToken', token, expiry_time, "/", host_domain)
     requests.post(url, data=json_data, headers=headers, cookies=set_cookie)
     return redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
 
@@ -45,12 +45,3 @@ def makeid():
     for i in range(0, 40):
         text += possible[math.floor(random.random() * len(possible))]
     return text
-
-# def set_cookie(response, key, value, expire=None):
-#     if expire is None:
-#         max_age = 365*24*60*60  #one year
-#     else:
-#         max_age = expire
-#     expires = datetime.datetime.strftime(datetime.datetime.utcnow() + datetime.timedelta(seconds=max_age), "%a, %d-%b-%Y %H:%M:%S GMT")
-#     response.set_cookie(key, value, max_age=max_age, expires=expires,
-#         domain=settings.SESSION_COOKIE_DOMAIN, secure=settings.SESSION_COOKIE_SECURE or None)
