@@ -23,7 +23,7 @@ logger = logging.getLogger('kdp')
 @login_required(login_url='common:login')
 def email(request):
     logger.info("INFO 레벨로 출력")
-    # hr = HttpResponse('ok')
+    hr = HttpResponse('ok')
     api_key = "#kdp@1914!"
     host_domain = "koreadigitalpark.com"
     user = User.objects.get(username=request.user)
@@ -34,8 +34,8 @@ def email(request):
     expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=10)
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     url = "https://mail.koreadigitalpark.com/mail_api/token_sso/"
-    set_cookie = ('MailToken', token, expiry_time, "/", host_domain)
-    requests.post(url, data=json_data, headers=headers, cookies=set_cookie)
+    cookie = hr.set_cookie('MailToken', token, max_age=10, expires=expiry_time, path="/", domain=host_domain)
+    requests.post(url, data=json_data, headers=headers, cookies=cookie)
     return redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
 
 
