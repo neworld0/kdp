@@ -17,17 +17,19 @@
             <tbody>
             <tr>
                 <th>api_key</th>
-                <td><input type="text" name="api_key" id="api_key" value="#kdp@1914!" style="width: 98%;"><br/>
+                <td><input type="text" class="form-control" name="api_key" id="api_key" value="#kdp@1914!" style="width: 98%;"><br/>
                     메일플러그에서 발급된 api_key 키값
                 </td>
             </tr>
             <tr>
                 <th>도메인명</th>
-                <td><input type="text" name="host_domain" id="host_domain" value="koreadigitalpark.com" style="width: 98%;"></td>
+                <td><input type="text" class="form-control" name="host_domain" id="host_domain" value="koreadigitalpark.com" style="width: 98%;"></td>
             </tr>
             <tr>
                 <th>데이타</th>
-                <td><textarea name="data" id="data" style="width: 650px; height: 100px">{"cid": "{{ user.username }}", "MailToken": "{{ token }}"}</textarea></td>
+                <td>
+                    <textarea class="form-control" name="data" id="data" style="width: 650px; height: 100px">{"cid": "{{ cid }}", "MailToken": "{{ MailToken }}"}</textarea>
+                </td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
