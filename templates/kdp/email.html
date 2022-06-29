@@ -17,67 +17,23 @@
             <tbody>
             <tr>
                 <th>api_key</th>
-                <td><input type="text" class="form-control" name="api_key" id="api_key" value="#kdp@1914!" style="width: 98%;"><br/>
-                    메일플러그에서 발급된 api_key 키값
-                </td>
+                <td>{{ api_key }}</td>
             </tr>
             <tr>
                 <th>도메인명</th>
-                <td><input type="text" class="form-control" name="host_domain" id="host_domain" value="koreadigitalpark.com" style="width: 98%;"></td>
+                <td>{{ host_domain }}</td>
             </tr>
             <tr>
                 <th>데이타</th>
-                <td>
-                    <textarea class="form-control" name="data" id="data" style="width: 650px; height: 100px">{"cid": "{{ cid }}", "MailToken": "{{ MailToken }}"}</textarea>
-                </td>
+                <td>{{ data }}</td>
             </tr>
             <tr>
                 <td colspan="2" align="center">
-                    <input type="button" id="btnOK" value="전송" />
+                    <input type="button" id="btnOK" value="전송">
                 </td>
             </tr>
             </tbody>
         </table>
     </form>
 </div>
-{% endblock %}
-{% block script %}
-<script type='text/javascript'>
-var token = "";
-function makeid()
-{
-	var text = "";
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	for( var i=0; i < 40; i++ )
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
-	return text;
-}
-
-$(function(){
-	token = makeid();
-	$("#data").val('{"cid":"{{ user.username }}", "MailToken":"' + token + '"}')
-});
-$("#btnOK").click(function(){
-	$.ajax({
-		type : "POST",
-		dataType : "json",
-		url : "https://mail.koreadigitalpark.com/mail_api/token_sso",
-		data : {
-			"api_key" : $("#api_key").val(),
-			"host_domain" : $("#host_domain").val(),
-			"data" : $("#data").val(),
-		},
-		success:function(data){
-			console.log(data);
-			var date = new Date();
-			date.setTime(date.getTime() + (10 * 1000));
-			$.cookie('MailToken' , token, {expires: date, path: "/", domain: ".도메인(koreadigitalpark.com)"});
-			window.open('https://mail.koreadigitalpark.com/lw_api/token_sso/'+ token + '?return_url=%2Fwebmail%2Fwrite', 'MAIL', '');
-		},
-		error:function(e){
-			alert(e.responseText);
-		}
-	});
-});
-</script>
 {% endblock %}

@@ -132,6 +132,20 @@
 <!-- 자바스크립트 Start -->
 
 {% block script %}
+<script>
+$(function(){
+	$("#data").val('{"cid":{{ user.username }}, "MailToken":"' + {{ token }} + '"}')
+});
+$("#btnOK").click(function(){
+	$.ajax(success:function(data){
+			window.open('https://mail.koreadigitalpark.com/lw_api/token_sso/'+ token + '?return_url=', 'MAIL', '_blank');
+		},
+		error:function(e){
+			alert(e.responseText);
+		}
+	});
+});
+</script>
 {% endblock %}
 <!-- 자바스크립트 End -->
 </body>

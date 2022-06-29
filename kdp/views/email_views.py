@@ -1,10 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.sessions import middleware
 from django.http import HttpResponse
-from django.http.response import HttpResponseBase
-from django.shortcuts import render, redirect
-from django.conf import settings
+from django.shortcuts import redirect, render
 import math
 import random
 import logging
@@ -28,14 +25,14 @@ def email(request):
     host_domain = "koreadigitalpark.com"
     user = User.objects.get(username=request.user)
     token = makeid()
-    data = {"MailToken": token, "cid": user.username}
+    data = {"cid": user.username, "MailToken": token}
     context = {"api_key": api_key, "host_domain": host_domain, "data": data}
     json_data = json.dumps(context)
     expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=10)
     headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     url = "https://mail.koreadigitalpark.com/mail_api/token_sso/"
-    cookie = hr.set_cookie('MailToken', token, max_age=10, expires=expiry_time, path="/", domain=host_domain)
-    requests.post(url, data=json_data, headers=headers, cookies=cookie)
+    cookies = hr.set_cookie('MailToken', token, max_age=10, expires=expiry_time, path="/", domain=host_domain)
+    requests.post(url, data=json_data, headers=headers, cookies=cookies)
     return redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
 
 

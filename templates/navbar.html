@@ -45,12 +45,6 @@
           <ul class="navbar-nav mr-auto">
               {% if request.user.is_authenticated %}
               <li class="nav-item p-1">
-<!--                <form method="POST" action="{% url 'kdp:email' %}">-->
-<!--                    <input type="hidden" name="api_key" id="api_key" value="#kdp@1914!">-->
-<!--                    <input type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">-->
-<!--                    <input type="hidden" name="data" id="data" value="">-->
-<!--                    <input type="button" id="btnOK" value="이메일" class="btn btn-sm btn-outline-secondary">-->
-<!--                </form>-->
                   <a href="{% url 'kdp:email' %}"
                      class="btn btn-sm btn-outline-secondary">이메일</a>
               </li>
