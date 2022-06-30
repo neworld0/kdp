@@ -6,34 +6,7 @@
         <p class="p-3"></p>
         <p class="p-3"></p>
     </div>
-    <form method="POST" action="https://mail.koreadigitalpark.com/mail_api/token_sso/" target="_blank">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">구분</th>
-                    <th scope="col">내용</th>
-                </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th>api_key</th>
-                <td>{{ api_key }}</td>
-            </tr>
-            <tr>
-                <th>도메인명</th>
-                <td>{{ host_domain }}</td>
-            </tr>
-            <tr>
-                <th>데이타</th>
-                <td>{{ data }}</td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="button" id="btnOK" value="전송">
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
+    <object data="https://mail.koreadigitalpark.com/lw_api/token_sso/ + {{ token }} + ?return_url=webmail/lists"
+            width="800" height="800" type="text/html"></object>
 </div>
 {% endblock %}
