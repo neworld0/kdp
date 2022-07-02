@@ -11,7 +11,7 @@ def index(request):
     sock.connect(("kdigitalpark.kr", 443))
     # print("내부 IP: ", sock.getsockname()[0])
     sockname = sock.getsockname()[0]
-    context = {"Inner_IP": sockname}
+    context = {"Inner": sockname}
     # req = requests.get("http://ipconfig.kr")
     # print("외부 IP: ", re.search(r'IP Address:(\d{1,3}\.\d{1,3}\.\d{1,3}.\d{1,3})', req.text)[1])
     return render(request, 'kdp/index.html', context)
