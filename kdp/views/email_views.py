@@ -8,8 +8,7 @@ import logging
 import requests
 import json
 import datetime
-import socket
-import re
+
 logger = logging.getLogger('kdp')
 
 # email sso 생성
