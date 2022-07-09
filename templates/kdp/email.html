@@ -6,23 +6,23 @@
         <p class="p-3"></p>
         <p class="p-3"></p>
     </div>
-    <div class="text-center">
-        <form method='POST' action="https://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">
-            <input class="form-control" type="text" name="api_key" id="api_key" value="#kdp@1914!">
-            <input class="form-control" type="text" name="host_domain" id="host_domain" value="koreadigitalpark.com">
-            <textarea class="form-control" name="data" id="data" disabled>{{ data }}</textarea>
-            <input type="button" class="btn btn-primary" id="btnOK" value="Email"/>
-        </form>
-    </div>
-    <div class="m-3 p-3 text-center">
-        <a type="button" id="home" class="btn btn-primary" href="{% url 'kdp:index' %}">홈으로 가기</a>
-<!--        <button class="btn btn-primary" id="home">Email Connect</button>-->
-    </div>
+<!--    <div class="text-center">-->
+<!--        <form method='POST' action="https://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">-->
+<!--            <input class="form-control" type="text" name="api_key" id="api_key" value="#kdp@1914!">-->
+<!--            <input class="form-control" type="text" name="host_domain" id="host_domain" value="koreadigitalpark.com">-->
+<!--            <textarea class="form-control" name="data" id="data" disabled>{{ data }}</textarea>-->
+<!--            <input type="button" class="btn btn-primary" id="btnOK" value="Email"/>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div class="m-3 p-3 text-center">-->
+<!--        <a type="button" id="home" class="btn btn-primary" href="{% url 'kdp:index' %}">홈으로 가기</a>-->
+<!--&lt;!&ndash;        <button class="btn btn-primary" id="home">Email Connect</button>&ndash;&gt;-->
+<!--    </div>-->
 </div>
 {% endblock %}
 
-{% block script %}
-<script>
+<!--{% block script %}-->
+<!--<script>-->
 <!--var token = "";-->
 <!--function makeid()-->
 <!--{-->
@@ -37,7 +37,7 @@
 <!--	token = makeid();-->
 <!--	$("#data").val('{"cid": "{{ user.username }}", "MailToken":"' + token + '"}')-->
 <!--});-->
-$(document).ready(function(){
+<!--$(document).ready(function(){-->
 <!--    $("#btnOK").bind("click", function(){-->
 <!--        $.ajax({-->
 <!--            type : "POST",-->
@@ -60,8 +60,8 @@ $(document).ready(function(){
 <!--            }-->
 <!--        });-->
 <!--    });-->
-    $("#btnOK").trigger("click");
-    $("#home").trigger("click");
-});
-</script>
-{% endblock %}
+<!--    $("#btnOK").trigger("click");-->
+<!--    $("#home").trigger("click");-->
+<!--});-->
+<!--</script>-->
+<!--{% endblock %}-->
