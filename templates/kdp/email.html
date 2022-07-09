@@ -15,8 +15,8 @@
         </form>
     </div>
     <div class="m-3 p-3 text-center">
-<!--        <a type="button" id="home" class="btn btn-primary" href="https://mail.koreadigitalpark.com/lw_api/token_sso/'+ token + '?return_url=%2Fwebmail%2Flists">홈으로 가기</a>-->
-        <button class="btn btn-primary" id="home">Email Connect</button>
+        <a type="button" id="home" class="btn btn-primary" href="{% url 'kdp:index' %}">홈으로 가기</a>
+<!--        <button class="btn btn-primary" id="home">Email Connect</button>-->
     </div>
 </div>
 {% endblock %}
