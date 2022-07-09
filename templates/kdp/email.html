@@ -8,9 +8,9 @@
     </div>
     <div class="text-center">
         <form method='POST' action="https://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">
-            <input class="form-control" type="hidden" name="api_key" id="api_key" value="#kdp@1914!">
-            <input class="form-control" type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">
-            <textarea name="data" id="data" style="display:none" disabled>{"cid": "{{ user.username }}", "MailToken":"{{ MailToken }}"}</textarea>
+            <input class="form-control" type="text" name="api_key" id="api_key" value="#kdp@1914!">
+            <input class="form-control" type="text" name="host_domain" id="host_domain" value="koreadigitalpark.com">
+            <textarea name="data" id="data" disabled>{"cid": "{{ user.username }}", "MailToken":"{{ MailToken }}"}</textarea>
             <input type="button" class="btn btn-primary" id="btnOK" value="Email"/>
         </form>
     </div>
