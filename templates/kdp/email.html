@@ -6,61 +6,61 @@
         <p class="p-3"></p>
         <p class="p-3"></p>
     </div>
-    <div class="text-center">
-        <form method='POST' action="https://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">
-            <input class="form-control" type="hidden" name="api_key" id="api_key" value="#kdp@1914!">
-            <input class="form-control" type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">
-            <textarea name="data" id="data" style="display:none" disabled>{"cid": {{ user.username }}, "MailToken":""}</textarea>
-            <input type="hidden" id="btnOK" value="" />
-        </form>
-    </div>
-    <div class="m-3 p-3 text-center">
-        <a type="button" id="home" class="btn btn-primary" href="{% url 'kdp:index' %}">홈으로 가기</a>
-    </div>
+<!--    <div class="text-center">-->
+<!--        <form method='POST' action="https://mail.koreadigitalpark.com/mail_api/token_sso" target="_blank">-->
+<!--            <input class="form-control" type="hidden" name="api_key" id="api_key" value="#kdp@1914!">-->
+<!--            <input class="form-control" type="hidden" name="host_domain" id="host_domain" value="koreadigitalpark.com">-->
+<!--            <textarea name="data" id="data" style="display:none" disabled>{"cid": "{{ user.username }}", "MailToken":""}</textarea>-->
+<!--            <input type="hidden" id="btnOK" value="" />-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <div class="m-3 p-3 text-center">-->
+<!--        <a type="button" id="home" class="btn btn-primary" href="{% url 'kdp:index' %}">홈으로 가기</a>-->
+<!--    </div>-->
 </div>
 {% endblock %}
 
-{% block script %}
-<script>
-var token = "";
-function makeid()
-{
-	var text = "";
-	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-	for( var i=0; i < 40; i++ )
-		text += possible.charAt(Math.floor(Math.random() * possible.length));
-	return text;
-}
+<!--{% block script %}-->
+<!--<script>-->
+<!--var token = "";-->
+<!--function makeid()-->
+<!--{-->
+<!--	var text = "";-->
+<!--	var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";-->
+<!--	for( var i=0; i < 40; i++ )-->
+<!--		text += possible.charAt(Math.floor(Math.random() * possible.length));-->
+<!--	return text;-->
+<!--}-->
 
-$(function(){
-	token = makeid();
-	$("#data").val('{"cid": "{{ user.username }}", "MailToken":"' + token + '"}')
-});
-$(document).ready(function(){
-    $("#btnOK").bind("click", function(){
-        $.ajax({
-            type : "POST",
-            dataType : "json",
-            url : "https://mail.koreadigitalpark.com/mail_api/token_sso",
-            data : {
-                "api_key" : $("#api_key").val(),
-                "host_domain" : $("#host_domain").val(),
-                "data" : $("#data").val(),
-            },
-            success:function(data){
-                console.log(data);
-                var date = new Date();
-                date.setTime(date.getTime() + (10 * 1000));
-                $.cookie('MailToken' , token, {expires: date, path: "/", domain: ".도메인(kosekorea.co.kr)"});
-                window.open('https://mail.koreadigitalpark.com/lw_api/token_sso/'+ token + '?return_url=%2Fwebmail%2Flists', 'MAIL', '');
-            },
-            error:function(e){
-                alert(e.responseText);
-            }
-        });
-    });
-    $("#btnOK").trigger("click");
-    $("#home").trigger("click");
-});
-</script>
-{% endblock %}
+<!--$(function(){-->
+<!--	token = makeid();-->
+<!--	$("#data").val('{"cid": "{{ user.username }}", "MailToken":"' + token + '"}')-->
+<!--});-->
+<!--$(document).ready(function(){-->
+<!--    $("#btnOK").bind("click", function(){-->
+<!--        $.ajax({-->
+<!--            type : "POST",-->
+<!--            dataType : "json",-->
+<!--            url : "https://mail.koreadigitalpark.com/mail_api/token_sso",-->
+<!--            data : {-->
+<!--                "api_key" : $("#api_key").val(),-->
+<!--                "host_domain" : $("#host_domain").val(),-->
+<!--                "data" : $("#data").val(),-->
+<!--            },-->
+<!--            success:function(data){-->
+<!--                console.log(data);-->
+<!--                var date = new Date();-->
+<!--                date.setTime(date.getTime() + (10 * 1000));-->
+<!--                $.cookie('MailToken' , token, {expires: date, path: "/", domain: ".도메인(kosekorea.co.kr)"});-->
+<!--                window.open('https://mail.koreadigitalpark.com/lw_api/token_sso/'+ token + '?return_url=%2Fwebmail%2Flists', 'MAIL', '');-->
+<!--            },-->
+<!--            error:function(e){-->
+<!--                alert(e.responseText);-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--    $("#btnOK").trigger("click");-->
+<!--    $("#home").trigger("click");-->
+<!--});-->
+<!--</script>-->
+<!--{% endblock %}-->
