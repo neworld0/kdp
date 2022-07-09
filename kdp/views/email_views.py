@@ -28,14 +28,8 @@ def email(request):
     url = "https://mail.koreadigitalpark.com/mail_api/token_sso/"
     cookies = hr.set_cookie('MailToken', token, max_age=10, expires=expiry_time, path="/", domain=host_domain)
     requests.post(url, data=json_data, json=json_data, headers=headers, cookies=cookies)
-    return redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
-
-
-# @login_required(login_url='common:login')
-# def email(request):
-#     logger.info("INFO 레벨로 출력")
-#     return render(request, 'kdp/email.html')
-
+    return render(request, 'kdp/email.html', context)
+    # return redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
 
 
 def makeid():
@@ -44,3 +38,10 @@ def makeid():
     for i in range(0, 40):
         text += possible[math.floor(random.random() * len(possible))]
     return text
+
+
+
+# @login_required(login_url='common:login')
+# def email(request):
+#     logger.info("INFO 레벨로 출력")
+#     return render(request, 'kdp/email.html')
