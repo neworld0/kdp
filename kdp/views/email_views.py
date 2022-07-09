@@ -20,7 +20,7 @@ def email(request):
     host_domain = "koreadigitalpark.com"
     user = User.objects.get(username=request.user)
     token = makeid()
-    data = {"cid": '"' + user.username + '"', "MailToken": '"' + token + '"'}
+    data = {"cid": user.username, "MailToken": token}
     context = {"api_key": api_key, "host_domain": host_domain, "data": data}
     json_data = json.dumps(context)
     expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=10)
