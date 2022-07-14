@@ -44,8 +44,7 @@ def email(request):
         'Cookie': 'cisession=0a6224bbb7f9d1d1e710d20440da602094b6a347'
     }
     url = "https://mail.koreadigitalpark.com/mail_api/token_sso/"
-    response = requests.request("POST", url, headers=headers, data=payload)
-    print(response.text)
+    requests.request("POST", url, headers=headers, data=payload)
     return redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
 
 
