@@ -24,7 +24,7 @@ def email(request):
     context = {"api_key": api_key, "host_domain": host_domain, "data": data}
     json_data = json.dumps(context)
     expiry_time = datetime.datetime.now() + datetime.timedelta(seconds=10)
-    headers = {"Content-type": "application/json", "Accept": "text/plain"}
+    headers = {"Content-type": "application/x-www-form-urlencoded", "Accept": "text/plain"}
     url = "https://mail.koreadigitalpark.com/mail_api/token_sso/"
     cookies = hr.set_cookie("MailToken", token, max_age=10, expires=expiry_time, path="/", domain=host_domain)
     requests.post(url, data=json_data, json=json_data, headers=headers, cookies=cookies)
