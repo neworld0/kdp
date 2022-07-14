@@ -45,7 +45,8 @@ def email(request):
     }
     url = "https://mail.koreadigitalpark.com/mail_api/token_sso/"
     response = requests.request("POST", url, headers=headers, data=payload)
-    return response, redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
+    print(response.text)
+    return redirect('https://mail.koreadigitalpark.com/lw_api/token_sso/' + token + '?return_url=')
 
 
 def makeid():
