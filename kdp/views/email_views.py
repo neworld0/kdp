@@ -36,9 +36,9 @@ logger = logging.getLogger('kdp')
 @login_required(login_url='common:login')
 def email(request):
     logger.info("INFO 레벨로 출력")
-    # user = User.objects.get(username=request.user)
+    user = User.objects.get(username=request.user)
     token = makeid()
-    payload = 'api_key=%23kdp%401914!&host_domain=koreadigitalpark.com&data=%7B%22cid%22%3A%22kdp%22%2C%20%22MailToken%22%3A%22ZJbMIL2jwoJynEpk8wmXdlhj2e2aewvsS7VDZj9C%22%7D'
+    payload = 'api_key=%23' + user.username + '%401914!&host_domain=koreadigitalpark.com&data=%7B%22cid%22%3A%22kdp%22%2C%20%22MailToken%22%3A%22'+ token + '%22%7D'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Cookie': 'cisession=0a6224bbb7f9d1d1e710d20440da602094b6a347'
