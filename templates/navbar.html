@@ -3,7 +3,7 @@
 <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="{% url 'index' %}">
-        <img src="/static/img/KDP_logo_bgremov.png" alt="" width="158" height="30" class="d-inline-block align-text-top">
+            <img src="/static/img/KDP_logo_bgremov.png" alt="" width="200" height="38" class="d-inline-block align-text-top">
     </a>
     <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" aria-label="offcanvasWithBothOptionsLabel">
       <svg class="bi" width="24" height="24" aria-hidden="true">
@@ -12,14 +12,13 @@
     </button>
     <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"><strong>Korea Digital Park</strong></h5>
+        <a href="{% url 'index' %}" class="offcanvas-title" id="offcanvasWithBothOptionsLabel">
+            <img src="/static/img/KDP_bizcard.jpg" width="201" height="47" class="d-inline-block align-text-top">
+        </a>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-          <li class="nav-item p-1">
-            <a class="nav-link text-black active" href="{% url 'index' %}" style="font-weight:bolder">HOME</a>
-          </li>
           <li class="nav-item p-1">
             <a class="nav-link text-black" href="{% url 'kdp:introduction' %}" style="font-weight:bolder">KDP소개</a>
           </li>
